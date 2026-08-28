@@ -42,25 +42,29 @@ export default function SearchMenu() {
         <Input
           value={query}
           onChange={(event) => setQuery(event.target.value)}
-          className="size-full border border-blue"
-          wrapperClassName="w-full border-white border-1 h-16"
-          groupClassName="size-full flex flex-row"
-          buttonClassName="aspect-square flex justify-center items-center"
+          className="px-4 py-3"
+          wrapperClassName="w-full"
+          groupClassName="flex items-stretch overflow-hidden rounded-full border border-zinc-300 bg-white focus-within:border-indigo-500 focus-within:ring-2 focus-within:ring-indigo-500/30 dark:border-zinc-700 dark:bg-zinc-900"
+          buttonClassName="cursor-pointer border-zinc-200 px-5 transition-colors hover:bg-zinc-100 dark:border-zinc-700 dark:hover:bg-zinc-800"
           button={<HugeiconsIcon icon={SearchIcon} />}
         />
       </form>
 
-      {isLoading && <p>Loading…</p>}
+      {isLoading && <p className="text-sm text-zinc-500">Loading…</p>}
 
-      {error && <p role="alert">{error}</p>}
+      {error && (
+        <p role="alert" className="text-sm text-red-600 dark:text-red-400">
+          {error}
+        </p>
+      )}
 
       {!isLoading && results.length > 0 && (
-        <div className="flex flex-col">
+        <div className="mt-2 flex flex-col overflow-hidden rounded-xl border border-zinc-200 bg-white shadow-lg dark:border-zinc-800 dark:bg-zinc-900">
           {results.map(({ show }) => (
             <Link
               key={show.id}
               href={`/shows/${show.id}`}
-              className="flex items-center gap-2"
+              className="flex cursor-pointer items-center gap-3 px-3 py-2 transition-colors hover:bg-zinc-100 dark:hover:bg-zinc-800"
             >
               {show.image?.medium ? (
                 <Image
@@ -68,12 +72,12 @@ export default function SearchMenu() {
                   alt={show.name}
                   width={48}
                   height={48}
-                  className="shrink-0 object-cover"
+                  className="size-12 shrink-0 rounded-lg object-cover"
                 />
               ) : (
-                <div className="size-12 shrink-0" />
+                <div className="size-12 shrink-0 rounded-lg bg-zinc-200 dark:bg-zinc-800" />
               )}
-              <span>
+              <span className="text-sm text-zinc-900 dark:text-zinc-100">
                 {show.name} - {show.premiered} - {show.ended ?? "ongoing"}
               </span>
             </Link>

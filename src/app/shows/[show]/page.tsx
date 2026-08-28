@@ -19,19 +19,28 @@ export default async function Page({ params }: Props) {
           <Image
             src={showInstance.image.medium}
             alt={showInstance.name}
-            width={210}
-            height={295}
-            className="shrink-0"
+            width={280}
+            height={420}
+            className="shrink-0 rounded-xl shadow-lg"
           />
         ) : (
-          <div className="aspect-2/3 shrink-0" />
+          <div className="aspect-2/3 w-70 shrink-0 rounded-xl bg-zinc-200 dark:bg-zinc-800" />
         )}
         <Container direction="column" gap={4}>
-          <Heading as="h1">{showInstance.name}</Heading>
+          <Heading as="h1" className="text-4xl font-bold tracking-tight">
+            {showInstance.name}
+          </Heading>
           {showInstance.summary ? (
-            <Typography as="div">{stripHtml(showInstance.summary)}</Typography>
+            <Typography
+              as="div"
+              className="text-zinc-600 leading-relaxed dark:text-zinc-400"
+            >
+              {stripHtml(showInstance.summary)}
+            </Typography>
           ) : (
-            <Typography as="div">No Description</Typography>
+            <Typography as="div" className="text-zinc-600 dark:text-zinc-400">
+              No Description
+            </Typography>
           )}
         </Container>
       </Container>
