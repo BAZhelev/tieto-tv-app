@@ -4,6 +4,7 @@ import "./globals.css";
 import Link from "next/link";
 import { Heading } from "@/components/atoms";
 import { PageLayout } from "@/components/molecules";
+import { NetworkBanner } from "@/components/NetworkBanner";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,6 +28,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
+        <NetworkBanner />
         <PageLayout
           headerClassName="flex justify-center py-6"
           header={
