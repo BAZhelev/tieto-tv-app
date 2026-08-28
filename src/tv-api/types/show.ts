@@ -1,4 +1,5 @@
 import type { CastMember } from "./cast";
+import type { Episode } from "./episodes";
 import type { Season } from "./season";
 import type {
   Country,
@@ -51,5 +52,6 @@ export type Show = {
   _embedded?: {
     cast?: CastMember[];
     seasons?: Season[];
+    episodes?: Episode[];
   };
 };

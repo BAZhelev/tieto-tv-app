@@ -41,7 +41,7 @@ export default async function Page() {
                 className="w-full h-auto"
               />
             ) : (
-              <div className="aspect-[2/3]" />
+              <div className="aspect-2/3" />
             )}
             <span>{show.name}</span>
           </Link>

@@ -52,6 +52,7 @@ export function Tabs({
               role="tab"
               id={`${baseId}-tab-${tab.id}`}
               aria-selected={selected}
+              data-active={selected}
               aria-controls={`${baseId}-panel-${tab.id}`}
               className={[
                 "shrink-0 whitespace-nowrap",
