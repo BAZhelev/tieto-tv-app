@@ -1,3 +1,7 @@
+import Image from "next/image";
+import { Container, Heading, Typography } from "@/components/atoms";
+import { ShowTabs } from "@/components/ShowTabs";
+import { stripHtml } from "@/lib/html";
 import { getShow } from "@/tv-api/get-show";
 
 type Props = {
@@ -9,11 +13,34 @@ export default async function Page({ params }: Props) {
   const showInstance = await getShow({ id: show });
 
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <h1>This will be the page that shows you shows {show}</h1>
-        <code>{JSON.stringify(showInstance, null, 2)}</code>
-      </main>
-    </div>
+    <Container className="flex-1 p-8 gap-8" direction="column">
+      <Container direction="row" align="start" gap={8}>
+        {showInstance.image?.medium ? (
+          <Image
+            src={showInstance.image.medium}
+            alt={showInstance.name}
+            width={210}
+            height={295}
+            className="shrink-0"
+          />
+        ) : (
+          <div className="aspect-2/3 shrink-0" />
+        )}
+        <Container direction="column" gap={4}>
+          <Heading as="h1">{showInstance.name}</Heading>
+          {showInstance.summary ? (
+            <Typography as="div">{stripHtml(showInstance.summary)}</Typography>
+          ) : (
+            <Typography as="div">No Description</Typography>
+          )}
+        </Container>
+      </Container>
+
+      <ShowTabs
+        cast={showInstance._embedded?.cast ?? []}
+        seasons={showInstance._embedded?.seasons ?? []}
+        episodes={showInstance._embedded?.episodes ?? []}
+      />
+    </Container>
   );
 }
