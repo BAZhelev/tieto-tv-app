@@ -4,6 +4,9 @@ import { Container, Heading } from "@/components/atoms";
 import SearchMenu from "@/components/SearchMenu";
 import { getShows } from "@/tv-api/get-shows";
 
+export const dynamic = "force-dynamic";
+export const revalidate = 3600;
+
 export default async function Page() {
   const shows = await getShows();
 
