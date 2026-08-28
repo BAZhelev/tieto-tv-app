@@ -11,7 +11,7 @@ export async function getShowsSchedule({
   date,
   country,
   isWeb = true,
-}: Args = {}): Promise<Schedule> {
+}: Args = {}): Promise<Schedule[]> {
   return tvBaseApi({
     path: `/schedule${isWeb ? "/web" : ""}`,
     params: { date, country },
