@@ -5,5 +5,6 @@ export async function getShows(): Promise<Show[]> {
   return tvBaseApi({
     path: "shows",
     params: { page: 0 },
+    revalidate: 600,
   });
 }

@@ -15,5 +15,6 @@ export async function getShowsSchedule({
   return tvBaseApi({
     path: `/schedule${isWeb ? "/web" : ""}`,
     params: { date, country },
+    revalidate: 120,
   });
 }

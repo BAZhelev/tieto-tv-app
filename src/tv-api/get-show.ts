@@ -23,5 +23,6 @@ export async function getShow({
         includeEpisodes && "episodes",
       ],
     },
+    revalidate: 600,
   });
 }
