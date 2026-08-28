@@ -7,6 +7,7 @@ import type {
   SelfLink,
   ShowSchedule,
 } from "./shared";
+import type { Show } from "./show";
 
 export type SearchNetwork = {
   id: number;
@@ -44,4 +45,9 @@ export type Search = {
   summary: string;
   updated: number;
   _links: SearchLinks;
+};
+
+export type SearchResult = {
+  score: number;
+  show: Show;
 };
