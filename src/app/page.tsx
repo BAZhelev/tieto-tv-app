@@ -16,21 +16,22 @@ export default async function Page() {
     .slice(0, 9);
 
   return (
-    <Container
-      className="flex-1 p-8 bg-zinc-50 font-sans dark:bg-black"
-      direction="column"
-      gap={8}
-    >
+    <Container className="flex-1 p-8 font-sans" direction="column" gap={8}>
       <SearchMenu />
 
-      <Heading as="h2">What are people watching</Heading>
+      <Heading
+        as="h2"
+        className="text-center text-3xl font-bold tracking-tight"
+      >
+        What are people watching
+      </Heading>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:px-0 xl:px-52">
+      <div className="mx-auto grid w-full max-w-5xl grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3">
         {topShows.map((show) => (
           <Link
             key={show.id}
             href={`/shows/${show.id}`}
-            className="flex flex-col gap-2"
+            className="group flex flex-col gap-3"
           >
             {show.image?.medium ? (
               <Image
@@ -38,12 +39,14 @@ export default async function Page() {
                 alt={show.name}
                 width={210}
                 height={295}
-                className="w-full h-auto"
+                className="aspect-2/3 w-full rounded-xl object-cover shadow-sm transition-transform group-hover:scale-[1.02] group-hover:shadow-lg"
               />
             ) : (
-              <div className="aspect-2/3" />
+              <div className="aspect-2/3 w-full rounded-xl bg-zinc-200 dark:bg-zinc-800" />
             )}
-            <span>{show.name}</span>
+            <span className="text-sm font-medium text-zinc-900 line-clamp-1 transition-colors group-hover:text-indigo-600 dark:text-zinc-100 dark:group-hover:text-indigo-400">
+              {show.name}
+            </span>
           </Link>
         ))}
       </div>
