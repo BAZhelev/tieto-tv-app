@@ -45,9 +45,9 @@ export default async function Page() {
                 className="aspect-2/3 w-full rounded-xl object-cover shadow-sm transition-transform group-hover:scale-[1.02] group-hover:shadow-lg"
               />
             ) : (
-              <div className="aspect-2/3 w-full rounded-xl bg-zinc-200 dark:bg-zinc-800" />
+              <div className="aspect-2/3 w-full rounded-xl bg-zinc-800" />
             )}
-            <span className="text-sm font-medium text-zinc-900 line-clamp-1 transition-colors group-hover:text-indigo-600 dark:text-zinc-100 dark:group-hover:text-indigo-400">
+            <span className="text-sm font-medium line-clamp-1 transition-colors text-zinc-100 group-hover:text-indigo-400">
               {show.name}
             </span>
           </Link>
