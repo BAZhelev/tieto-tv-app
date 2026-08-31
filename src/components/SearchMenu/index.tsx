@@ -44,8 +44,8 @@ export default function SearchMenu() {
           onChange={(event) => setQuery(event.target.value)}
           className="px-4 py-3"
           wrapperClassName="w-full"
-          groupClassName="flex items-stretch overflow-hidden rounded-full border border-zinc-300 bg-white focus-within:border-indigo-500 focus-within:ring-2 focus-within:ring-indigo-500/30 dark:border-zinc-700 dark:bg-zinc-900"
-          buttonClassName="cursor-pointer border-zinc-200 px-5 transition-colors hover:bg-zinc-100 dark:border-zinc-700 dark:hover:bg-zinc-800"
+          groupClassName="flex items-stretch overflow-hidden rounded-full border focus-within:border-indigo-500 focus-within:ring-2 focus-within:ring-indigo-500/30 border-zinc-700 bg-zinc-900"
+          buttonClassName="cursor-pointer px-5 transition-colors border-zinc-700 hover:bg-zinc-800"
           button={<HugeiconsIcon icon={SearchIcon} />}
         />
       </form>
@@ -53,18 +53,18 @@ export default function SearchMenu() {
       {isLoading && <p className="text-sm text-zinc-500">Loading…</p>}
 
       {error && (
-        <p role="alert" className="text-sm text-red-600 dark:text-red-400">
+        <p role="alert" className="text-sm text-red-400">
           {error}
         </p>
       )}
 
       {!isLoading && results.length > 0 && (
-        <div className="mt-2 flex flex-col overflow-hidden rounded-xl border border-zinc-200 bg-white shadow-lg dark:border-zinc-800 dark:bg-zinc-900">
+        <div className="mt-2 flex flex-col overflow-hidden rounded-xl border shadow-lg border-zinc-800 bg-zinc-900">
           {results.map(({ show }) => (
             <Link
               key={show.id}
               href={`/shows/${show.id}`}
-              className="flex cursor-pointer items-center gap-3 px-3 py-2 transition-colors hover:bg-zinc-100 dark:hover:bg-zinc-800"
+              className="flex cursor-pointer items-center gap-3 px-3 py-2 transition-colors hover:bg-zinc-800"
             >
               {show.image?.medium ? (
                 <Image
@@ -75,9 +75,9 @@ export default function SearchMenu() {
                   className="size-12 shrink-0 rounded-lg object-cover"
                 />
               ) : (
-                <div className="size-12 shrink-0 rounded-lg bg-zinc-200 dark:bg-zinc-800" />
+                <div className="size-12 shrink-0 rounded-lg bg-zinc-800" />
               )}
-              <span className="text-sm text-zinc-900 dark:text-zinc-100">
+              <span className="text-sm text-zinc-100">
                 {show.name} - {show.premiered} - {show.ended ?? "ongoing"}
               </span>
             </Link>
