@@ -3,7 +3,7 @@
 import dynamic from "next/dynamic";
 
 const Banner = dynamic(
-  import("./Banner").then((mod) => mod.NetworkBanner),
+  () => import("./Banner").then((mod) => mod.NetworkBanner),
   { ssr: false },
 );
 

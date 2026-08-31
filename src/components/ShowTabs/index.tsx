@@ -21,9 +21,9 @@ export function ShowTabs({ cast, seasons, episodes }: Props) {
 
   return (
     <Tabs
-      tabListClassName="border-b border-zinc-200 dark:border-zinc-800"
-      tabClassName="cursor-pointer px-4 py-2 text-sm font-medium text-zinc-500 transition-colors hover:text-zinc-900 dark:hover:text-zinc-100"
-      activeTabClassName="border-b-2 border-indigo-600 text-indigo-600 dark:border-indigo-400 dark:text-indigo-400"
+      tabListClassName="border-b border-zinc-800"
+      tabClassName="cursor-pointer px-4 py-2 text-sm font-medium text-zinc-500 transition-colors hover:text-zinc-100"
+      activeTabClassName="border-b-2 border-indigo-400 text-indigo-400"
       value={active}
       onValueChange={setActive}
       items={[
@@ -50,7 +50,7 @@ function CastList({ cast }: { cast: CastMember[] }) {
         <Link
           key={member.person.id}
           href={member.person.url}
-          className="block cursor-pointer rounded-lg p-2 transition-colors hover:bg-zinc-100 dark:hover:bg-zinc-800"
+          className="block cursor-pointer rounded-lg p-2 transition-colors hover:bg-zinc-800"
         >
           <Container direction="row" align="center" gap={4}>
             {member.person.image?.medium ? (
@@ -62,7 +62,7 @@ function CastList({ cast }: { cast: CastMember[] }) {
                 className="size-12 rounded-full object-cover"
               />
             ) : (
-              <div className="size-12 rounded-full bg-zinc-200 dark:bg-zinc-800" />
+              <div className="size-12 rounded-full bg-zinc-800" />
             )}
             <Typography as="span">
               {member.character.name} - {member.person.name}
@@ -81,7 +81,7 @@ function SeasonList({ seasons }: { seasons: Season[] }) {
         <Link
           key={season.id}
           href={season.url}
-          className="block cursor-pointer rounded-lg p-2 transition-colors hover:bg-zinc-100 dark:hover:bg-zinc-800"
+          className="block cursor-pointer rounded-lg p-2 transition-colors hover:bg-zinc-800"
         >
           <Container direction="row" gap={4}>
             {season.image?.medium ? (
@@ -93,7 +93,7 @@ function SeasonList({ seasons }: { seasons: Season[] }) {
                 className="size-32 shrink-0 rounded-lg object-cover"
               />
             ) : (
-              <div className="size-32 shrink-0 rounded-lg bg-zinc-200 dark:bg-zinc-800" />
+              <div className="size-32 shrink-0 rounded-lg bg-zinc-800" />
             )}
             <Container direction="column" gap={2}>
               <Heading as="h3" className="text-lg font-semibold">
@@ -102,15 +102,12 @@ function SeasonList({ seasons }: { seasons: Season[] }) {
               {season.summary ? (
                 <Typography
                   as="div"
-                  className="text-sm text-zinc-600 leading-relaxed line-clamp-3 dark:text-zinc-400"
+                  className="text-sm leading-relaxed line-clamp-3 text-zinc-400"
                 >
                   {stripHtml(season.summary)}
                 </Typography>
               ) : (
-                <Typography
-                  as="div"
-                  className="text-sm text-zinc-600 dark:text-zinc-400"
-                >
+                <Typography as="div" className="text-sm text-zinc-400">
                   No Description
                 </Typography>
               )}
@@ -129,7 +126,7 @@ function EpisodeList({ episodes }: { episodes: Episode[] }) {
         <Link
           key={episode.id}
           href={episode.url}
-          className="block cursor-pointer rounded-lg p-2 transition-colors hover:bg-zinc-100 dark:hover:bg-zinc-800"
+          className="block cursor-pointer rounded-lg p-2 transition-colors hover:bg-zinc-800"
         >
           <Container direction="row" gap={4}>
             {episode.image?.medium ? (
@@ -141,7 +138,7 @@ function EpisodeList({ episodes }: { episodes: Episode[] }) {
                 className="size-32 shrink-0 rounded-lg object-cover"
               />
             ) : (
-              <div className="size-32 shrink-0 rounded-lg bg-zinc-200 dark:bg-zinc-800" />
+              <div className="size-32 shrink-0 rounded-lg bg-zinc-800" />
             )}
             <Container direction="column" gap={2}>
               <Heading as="h3" className="text-lg font-semibold">
@@ -150,15 +147,12 @@ function EpisodeList({ episodes }: { episodes: Episode[] }) {
               {episode.summary ? (
                 <Typography
                   as="div"
-                  className="text-sm text-zinc-600 leading-relaxed line-clamp-3 dark:text-zinc-400"
+                  className="text-sm leading-relaxed line-clamp-3 text-zinc-400"
                 >
                   {stripHtml(episode.summary)}
                 </Typography>
               ) : (
-                <Typography
-                  as="div"
-                  className="text-sm text-zinc-600 dark:text-zinc-400"
-                >
+                <Typography as="div" className="text-sm text-zinc-400">
                   No Description
                 </Typography>
               )}
